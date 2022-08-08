@@ -11,6 +11,8 @@ repositories {
 
 test {
     useTestNG() {
+        // runlist to executed. path is relative to current folder
+        suites 'src/test/resources/nodeGoat.xml'
     }
 }
 dependencies {
