@@ -60,7 +60,7 @@ public class NodeGoatTests extends BaseTest {
     @AfterSuite
     public void tearDown() {
 
-        if (api != null ) {
+        if (api != null) {
             String title = "My ZAP Security Report";
             String template = "traditional-html";
 
@@ -69,7 +69,7 @@ public class NodeGoatTests extends BaseTest {
             String targetFolder = "C:\\temp";
             try {
                 ApiResponse response = api.reports.generate(title, template, null, description, null, null, null,
-                        null, null, reportFilename, null, targetFolder, null );
+                        null, null, reportFilename, null, targetFolder, null);
 
                 System.out.println("ZAP report generated at this location: " + response.toString());
 
