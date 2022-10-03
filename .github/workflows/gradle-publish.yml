@@ -33,19 +33,23 @@ jobs:
     - name: Execute Gradle build
       run: ./gradlew build
 
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload Artefact
+      uses: actions/upload-artifact@v3
+      with:
+        name: digibank
+        path: target/digitalbank-${{ github.sha }}.war
+        retention-days: 5
+
   triage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/labeler@v4
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-  login:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
