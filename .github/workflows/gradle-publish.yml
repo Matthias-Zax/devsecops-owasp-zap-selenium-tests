@@ -47,8 +47,8 @@ jobs:
     - name: Upload Artefact
       uses: actions/upload-artifact@v3
       with:
-        name: digibank
-        path: build/digitalbank-${{ github.sha }}.war
+        name: OwaspZapSeleniumTests
+        path: build/libs/OwaspZapSeleniumTests-1.0-SNAPSHOT.jar
         retention-days: 5
 
   triage:
