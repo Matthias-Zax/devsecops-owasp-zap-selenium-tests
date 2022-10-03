@@ -13,8 +13,12 @@ on:
   release:
     types: [created]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
-  build:
+    build-and-push-image:
     runs-on: ubuntu-latest
 
     steps:
@@ -40,14 +44,14 @@ jobs:
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v2
       with:
-        registry: ghcr.io
+        registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload Artefact
       uses: actions/upload-artifact@v3
       with:
-        name: OwaspZapSeleniumTests
+        name: ${{ env.IMAGE_NAME }} 
         path: build/libs/OwaspZapSeleniumTests-1.0-SNAPSHOT.jar
         retention-days: 5
 
