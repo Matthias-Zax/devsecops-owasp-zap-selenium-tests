@@ -33,7 +33,6 @@ jobs:
     - name: Execute Gradle build
       run: ./gradlew build
 
-jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
