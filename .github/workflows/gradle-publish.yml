@@ -33,6 +33,12 @@ jobs:
     - name: Execute Gradle build
       run: ./gradlew build
 
+    - name: Execute Gradle build
+      run: ls -ltr
+
+    - name: Execute Gradle build
+      run: cd target && ls -ltr
+
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v2
       with:
